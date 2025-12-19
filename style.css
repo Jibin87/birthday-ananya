@@ -1,0 +1,457 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+}
+
+.screen {
+  display: none;
+  background: rgba(255,255,255,0.96);
+  padding: 36px;
+  border-radius: 26px;
+  max-width: 420px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  z-index: 2;
+}
+
+.screen.active {
+  display: block;
+}
+
+.title {
+  font-family: 'Playfair Display', serif;
+  color: #c9184a;
+  font-size: 34px;
+}
+
+#typed-name {
+  white-space: pre-line;
+}
+
+/* ================= BUTTONS ================= */
+
+button {
+  background: #c9184a;
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 30px;
+  font-size: 16px;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(201, 24, 74, 0.3);
+}
+
+button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* ================= HEARTS ================= */
+
+#heart-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.heart {
+  position: absolute;
+  animation: floatUp linear forwards;
+  filter: drop-shadow(0 0 6px rgba(255,77,109,0.6));
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(100vh);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-10vh);
+    opacity: 0;
+  }
+}
+
+/* ================= CANDLE ================= */
+
+#candle {
+  font-size: 64px;
+  cursor: pointer;
+  margin: 20px 0;
+  position: relative;
+}
+
+.flame {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  width: 12px;
+  height: 18px;
+  background: orange;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  animation: flicker 0.3s infinite alternate;
+}
+
+@keyframes flicker {
+  from {
+    transform: translateX(-50%) scale(1);
+  }
+  to {
+    transform: translateX(-50%) scale(1.2);
+  }
+}
+
+/* ================= FINAL TEXT ================= */
+
+.final {
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+#memory-text {
+  transition: opacity 0.6s ease;
+}
+
+/* ================= POPUP ================= */
+
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.popup.hidden {
+  display: none;
+}
+
+.popup-box {
+  background: white;
+  padding: 26px;
+  border-radius: 22px;
+  max-width: 320px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  animation: popIn 0.3s ease;
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.popup-box p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+/* ================= WISH VISUALS ================= */
+
+#wish-instruction {
+  font-size: 15px;
+  margin-bottom: 14px;
+  color: #555;
+}
+
+#candle-wrapper {
+  position: relative;
+  display: inline-block;
+  margin: 20px 0;
+}
+
+.heartbeat-ring {
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  border: 2px solid rgba(201, 24, 74, 0.4);
+  opacity: 0;
+  pointer-events: none;
+}
+
+#candle-wrapper.holding .heartbeat-ring {
+  animation: heartbeat 1.2s infinite;
+  opacity: 1;
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.15); opacity: 0.3; }
+  100% { transform: scale(1); opacity: 0.6; }
+}
+
+#candle-wrapper.holding #candle {
+  animation: candlePulse 1.2s infinite;
+}
+
+@keyframes candlePulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+
+#wish-after {
+  margin-top: 14px;
+  font-size: 15px;
+  color: #c9184a;
+  opacity: 0;
+  animation: fadeInWish 1.6s ease forwards;
+}
+
+@keyframes fadeInWish {
+  to { opacity: 1; }
+}
+
+.hidden {
+  display: none;
+}
+
+#wish {
+  position: relative;
+}
+
+#wish-btn {
+  display: block;
+  margin: 28px auto 0 auto; /* top | auto left/right | bottom */
+}
+
+/* ================= COLLAGE ================= */
+
+#collage {
+  max-width: 520px;
+  padding: 28px;
+}
+
+.collage-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px;
+  margin-bottom: 26px;
+}
+
+.collage-container img {
+  width: 100%;
+  height: 160px;      /* bigger images */
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+  object-fit: cover;
+  border-radius: 16px;
+  opacity: 0;
+  animation: fadeInPic 0.8s ease forwards;
+}
+
+.collage-container img:nth-child(1) { animation-delay: 0.2s; }
+.collage-container img:nth-child(2) { animation-delay: 0.4s; }
+.collage-container img:nth-child(3) { animation-delay: 0.6s; }
+.collage-container img:nth-child(4) { animation-delay: 0.8s; }
+.collage-container img:nth-child(5) { animation-delay: 1s; }
+.collage-container img:nth-child(6) { animation-delay: 1.2s; }
+
+@keyframes fadeInPic {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ================= LOVE TEXT ================= */
+
+.love-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  color: #c9184a;
+  margin: 18px 0 24px;
+  opacity: 0;
+  animation: loveFade 1.5s ease forwards;
+  animation-delay: 1.4s;
+}
+
+@keyframes loveFade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#memory-text {
+  transition: opacity 0.25s ease;
+}
+
+
+/* ================= COLLAGE CAROUSEL ================= */
+
+#collage {
+  max-width: 520px;
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 18px;
+  object-fit: cover;
+  transition: opacity 0.25s ease;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+}
+
+/* Navigation buttons */
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.85);
+  color: #c9184a;
+  border: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+
+.nav.left {
+  left: -12px;
+}
+
+.nav.right {
+  right: -12px;
+}
+
+.nav:hover {
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Love line */
+.love-line {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  color: #c9184a;
+  margin: 10px 0 22px;
+}
+
+/* ================= COLLAGE CAROUSEL (ENHANCED) ================= */
+
+#collage {
+  max-width: 520px;
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 340px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  border-radius: 22px;
+}
+
+/* Blurred background */
+#carousel-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  background-size: cover;
+  background-position: center;
+  filter: blur(18px) brightness(0.85);
+  transform: scale(1.1);
+}
+
+
+/* Main image */
+.carousel img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 18px;
+  object-fit: cover;
+  transition: opacity 0.25s ease;
+  box-shadow: 0 14px 32px rgba(0,0,0,0.35);
+}
+
+
+/* Navigation buttons */
+.nav {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  transform: translateY(-50%);
+  
+  background: rgba(255,255,255,0.9);
+  color: #c9184a;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+}
+
+.nav.left {
+  left: 14px;
+}
+
+.nav.right {
+  right: 14px;
+}
+
+.nav:hover {
+  transform: translateY(-50%) scale(1.1);
+}
+
+
+/* Love line */
+.love-line {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  color: #c9184a;
+  margin: 12px 0 22px;
+}
