@@ -19,12 +19,7 @@ function reveal(from, to) {
 
 /* 🎂 LOCK + FLIP CLOCK + CONFETTI */
 
-const unlockDate = new Date(
-  new Date().getFullYear(),
-  0,  // January
-  2,  // 2nd
-  0, 0, 0
-);
+const unlockDate = new Date(Date.now() + 1000 * 60);
 
 const lockscreen = document.getElementById("lockscreen");
 const intro = document.getElementById("intro");
@@ -505,5 +500,6 @@ if (carouselImg) {
 
   }, 500);
 }
+
 
 
