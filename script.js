@@ -1,3 +1,103 @@
+function heartBurst(count = 8) {
+  for (let i = 0; i < count; i++) {
+    const h = document.createElement("div");
+    h.className = "heart";
+    h.textContent = "💖";
+    h.style.left = 40 + Math.random() * 20 + "vw";
+    h.style.fontSize = 14 + Math.random() * 14 + "px";
+    h.style.animationDuration = 3 + Math.random() * 2 + "s";
+    heartBox.appendChild(h);
+    setTimeout(() => h.remove(), 6000);
+  }
+}
+
+function reveal(from, to) {
+  heartBurst(6);
+  go(from, to);
+}
+
+
+/* 🎂 LOCK + FLIP CLOCK + CONFETTI */
+
+const unlockDate = new Date(
+  new Date().getFullYear(),
+  0,  // January
+  2,  // 2nd
+  0, 0, 0
+);
+
+const lockscreen = document.getElementById("lockscreen");
+const intro = document.getElementById("intro");
+
+const dEl = document.getElementById("days");
+const hEl = document.getElementById("hours");
+const mEl = document.getElementById("minutes");
+const sEl = document.getElementById("seconds");
+
+function updateCountdown() {
+  const now = new Date();
+  const diff = unlockDate - now;
+
+  if (diff <= 0) {
+    triggerConfetti();
+    setTimeout(() => {
+      lockscreen.classList.remove("active");
+      intro.classList.add("active");
+    }, 1200);
+    clearInterval(timer);
+    return;
+  }
+
+  const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const m = Math.floor((diff / (1000 * 60)) % 60);
+  const s = Math.floor((diff / 1000) % 60);
+
+  dEl.textContent = String(d).padStart(2, "0");
+  hEl.textContent = String(h).padStart(2, "0");
+  mEl.textContent = String(m).padStart(2, "0");
+  sEl.textContent = String(s).padStart(2, "0");
+}
+
+const timer = setInterval(updateCountdown, 1000);
+updateCountdown();
+
+/* 🎉 CONFETTI */
+function triggerConfetti() {
+  const canvas = document.getElementById("confetti");
+  const ctx = canvas.getContext("2d");
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const pieces = Array.from({ length: 150 }, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: Math.random() * 6 + 4,
+    dx: Math.random() * 4 - 2,
+    dy: Math.random() * 6 + 2,
+    color: `hsl(${Math.random() * 360},100%,70%)`
+  }));
+
+  let frame = 0;
+  function animate() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    pieces.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.fill();
+      p.x += p.dx;
+      p.y += p.dy;
+    });
+    frame++;
+    if (frame < 120) requestAnimationFrame(animate);
+    else ctx.clearRect(0,0,canvas.width,canvas.height);
+  }
+  animate();
+}
+
+
 /* ================= INTRO TYPING ================= */
 
 const bgMusic = document.getElementById("bg-music");
@@ -295,15 +395,12 @@ function prevImage() {
   showImage(currentImgIndex);
 }
 
-/* Auto-advance */
 function startAutoSlide() {
   autoSlideInterval = setInterval(() => {
-    if (!autoPaused) {
-      currentImgIndex =
-        (currentImgIndex + 1) % collageImages.length;
-      showImage(currentImgIndex);
-    }
-  }, 4000); // every 4 seconds
+    currentImgIndex =
+      (currentImgIndex + 1) % collageImages.length;
+    showImage(currentImgIndex);
+  }, 2000); // slightly faster, still gentle
 }
 
 function pauseAutoSlide() {
