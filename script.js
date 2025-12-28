@@ -1,4 +1,4 @@
-const DEV_MODE = true;
+const DEV_MODE = false;
 
 function heartBurst(count = 8) {
   for (let i = 0; i < count; i++) {
@@ -515,6 +515,7 @@ if (carouselImg) {
 
   }, 500);
 }
+
 
 
 
