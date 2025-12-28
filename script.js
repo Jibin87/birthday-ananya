@@ -1,3 +1,5 @@
+const DEV_MODE = true;
+
 function heartBurst(count = 8) {
   for (let i = 0; i < count; i++) {
     const h = document.createElement("div");
@@ -19,7 +21,20 @@ function reveal(from, to) {
 
 /* 🎂 LOCK + FLIP CLOCK + CONFETTI */
 
-const unlockDate = new Date(Date.now() + 1000 * 60);
+let unlockDate;
+
+if (DEV_MODE) {
+  // Unlock 30 seconds from now for full testing
+  unlockDate = new Date(Date.now() + 1000 * 30);
+} else {
+  // Real birthday: Jan 2, 2026
+  unlockDate = new Date(
+    2026,
+    0,
+    2,
+    0, 0, 0
+  );
+}
 
 const lockscreen = document.getElementById("lockscreen");
 const intro = document.getElementById("intro");
@@ -500,6 +515,7 @@ if (carouselImg) {
 
   }, 500);
 }
+
 
 
 
