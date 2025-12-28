@@ -20,9 +20,9 @@ function reveal(from, to) {
 /* 🎂 LOCK + FLIP CLOCK + CONFETTI */
 
 const unlockDate = new Date(
-  new Date().getFullYear(),
-  0,  // January
-  2,  // 2nd
+  2026,
+  0,
+  2,
   0, 0, 0
 );
 
@@ -505,3 +505,4 @@ if (carouselImg) {
 
   }, 500);
 }
+
