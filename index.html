@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Happy Birthday Ananya❤️</title>
+  <title>For Ananya❤️</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -10,6 +12,7 @@
 
 <body>
 
+<!-- POPUP -->
 <div id="popup" class="popup hidden">
   <div class="popup-box">
     <p id="popup-text"></p>
@@ -22,59 +25,88 @@
 </audio>
 
 <div id="heart-container"></div>
+<canvas id="confetti"></canvas>
+
+<!-- 🔒 LOCK SCREEN -->
+<div class="screen active fade" id="lockscreen">
+  <h1 class="title pulse">For Ananya ❤️</h1>
+  <p class="subtitle">Unlocks on your birthday</p>
+
+  <div class="flip-clock">
+    <div class="flip-unit"><span id="days">00</span><small>DAYS</small></div>
+    <div class="flip-unit"><span id="hours">00</span><small>HOURS</small></div>
+    <div class="flip-unit"><span id="minutes">00</span><small>MIN</small></div>
+    <div class="flip-unit"><span id="seconds">00</span><small>SEC</small></div>
+  </div>
+
+  <p class="soft-note">Worth the wait ✨</p>
+</div>
 
 <!-- INTRO -->
-<div class="screen active" id="intro">
+<div class="screen fade" id="intro">
   <h1 class="title" id="typed-name"></h1>
-  <p>This is something I made only for you.</p>
-  <button onclick="startMusic(); go('intro','q1')">Start 💗</button>
+  <p>I wanted you to feel me here with you.</p>
+  <button onclick="startMusic(); go('intro','q1')">Come closer 💗</button>
 </div>
 
-<!-- Q1 -->
-<div class="screen" id="q1">
-  <h2>Question 1 ❤️</h2>
-  <p>What do you think makes us… <i>us</i>?</p>
-  <button onclick="wrongMsg()">A secret spell we forgot about</button>
-  <button onclick="answer('q1','q2','Because we keep showing up for each other, even when it’s not easy.')">
-    Choosing each other, every day
-  </button>
+<div class="screen fade" id="q1">
+  <h2>Before I Say Anything 💗</h2>
+
+  <p class="soft-block">
+    <span class="mid-line" style="--i:1">There’s something I want you to hear.</span>
+    <span class="mid-line" style="--i:2">Not as a promise made in excitement.</span>
+    <span class="mid-line" style="--i:3">Not as words meant to impress.</span>
+    <span class="mid-line" style="--i:4">But as something I feel quietly and deeply.</span>
+  </p>
+
+  <button onclick="reveal('q1','q2')">Continue</button>
 </div>
 
-<!-- Q2 -->
-<div class="screen" id="q2">
-  <h2>Question 2 ❤️</h2>
-  <p>What do we do best together?</p>
-  <button onclick="wrongMsg()">Argue about what to eat</button>
-  <button onclick="answer('q2','q3','Because being with you feels natural and safe.')">
-    Be completely ourselves
-  </button>
+<div class="screen fade" id="q2">
+  <h2>When I Think of You</h2>
+
+  <p class="soft-block">
+    <span class="mid-line" style="--i:1">When I think of you, my world softens.</span>
+    <span class="mid-line" style="--i:2">My thoughts slow down.</span>
+    <span class="mid-line" style="--i:3">My heart feels steady.</span>
+    <span class="mid-line" style="--i:4">You feel like the place I return to.</span>
+  </p>
+
+  <button onclick="reveal('q2','q3')">Keep going</button>
 </div>
 
-<!-- Q3 -->
-<div class="screen" id="q3">
-  <h2>Question 3 ❤️</h2>
-  <p>Even on hard days… what keeps us strong?</p>
-  <button onclick="wrongMsg()">Pure chaos and coffee</button>
-  <button onclick="answer('q3','q4','Because we don’t give up on each other.')">
-    Choosing us even during hard times
-</button>
+<div class="screen fade" id="q3">
+  <h2>What You Are to Me</h2>
+
+  <p class="soft-block">
+    <span class="mid-line" style="--i:1">You are more than someone I love.</span>
+    <span class="mid-line" style="--i:2">You are the person I choose.</span>
+    <span class="mid-line" style="--i:3">When life is gentle.</span>
+    <span class="mid-line" style="--i:4">And when it asks more of us.</span>
+  </p>
+
+  <button onclick="reveal('q3','q4')">Go on</button>
 </div>
 
-<!-- Q4 -->
-<div class="screen" id="q4">
-  <h2>Question 4 ❤️</h2>
-  <p>What do I want you to feel today, even from far away?</p>
-  <button onclick="wrongMsg()">That I’m being dramatic again</button>
-  <button onclick="rightMsg('q4','memory','That you’re deeply loved, steady in my heart, and never alone in this.')">
-    That you’re always in my heart and mind
-  </button>
+<div class="screen fade" id="q4">
+  <h2>Right Here, Right Now</h2>
+
+  <p class="soft-block">
+    <span class="mid-line" style="--i:1">I want you to feel secure in my love.</span>
+    <span class="mid-line" style="--i:2">Confident in where you stand.</span>
+    <span class="mid-line" style="--i:3">Unquestioning of my presence.</span>
+    <span class="mid-line" style="--i:4">I am here with you.</span>
+    <span class="mid-line" style="--i:5">And I will always choose you.</span>
+  </p>
+
+  <button onclick="reveal('q4','memory')">I love you💗</button>
 </div>
 
 <!-- MEMORY -->
 <div class="screen" id="memory">
   <h2>Something I Love About You 💞</h2>
   <p id="memory-text"></p>
-  <button onclick="go('memory','wish')">Continue💗</button>
+  <button onclick="go('memory','wish')">Continue 💗</button>
 </div>
 
 <!-- WISH -->
@@ -87,15 +119,12 @@
   </p>
 
   <div id="candle-wrapper">
-<div id="candle"
-     onpointerdown="startWish()"
-     onpointerup="endWish()"
-     onpointerleave="endWish()">
-  <div class="flame"></div>
-  🕯️
-</div>
-
-
+    <div id="candle"
+      onpointerdown="startWish()"
+      onpointerup="endWish()"
+      onpointerleave="endWish()">
+      <div class="flame"></div>🕯️
+    </div>
     <div class="heartbeat-ring"></div>
   </div>
 
@@ -110,49 +139,49 @@
 
 <!-- FINAL -->
 <div class="screen" id="final">
-  <h2 class="title">Happy Birthday Ananya❤️</h2>
+  <h2 class="title pulse">Happy Birthday Ananya❤️</h2>
+
   <p class="final">
-    Being away from you today hurts,
-    but loving you never does.<br><br>
+    <span class="line" style="--i:1">Being away from you today hurts,</span>
+    <span class="line" style="--i:2">but loving you never has.</span>
 
-    You’re not just my girlfriend.<br>
-    You’re my comfort, my safe place,
-    and my favorite thought.<br><br>
+    <span class="gap"></span>
 
-    I don’t promise perfection.<br>
-    I promise effort, honesty,
-    and choosing you always.<br><br>
+    <span class="line" style="--i:3">You are my comfort in chaos,</span>
+    <span class="line" style="--i:4">my calm on loud days,</span>
+    <span class="line" style="--i:5">and the thought I return to without trying.</span>
 
-    This distance is temporary.<br>
-    What I feel for you is not.<br><br>
+    <span class="gap"></span>
 
-    Wherever life takes us,
-    I want it to be with you,
-    hand in hand, heart to heart,
-    today, tomorrow, forever.
+    <span class="line" style="--i:6">This distance is only a moment in time.</span>
+    <span class="line" style="--i:7">What I feel for you lives far beyond it.</span>
+
+    <span class="gap"></span>
+
+    <span class="line" style="--i:8">Today, and on every day that follows,</span>
+    <span class="line" style="--i:9">I will always choose you.</span>
   </p>
 
   <button onclick="go('final','collage')">Continue 💗</button>
 </div>
 
 <!-- COLLAGE -->
-<div class="screen" id="collage">
+<div class="screen fade" id="collage">
+  <div class="collage-wrapper">
+    <div class="carousel">
+      <div id="carousel-bg"></div>
+      <img id="carousel-img" src="pics/1.jpg" alt="Us">
+    </div>
 
-<div class="carousel">
+    <div class="collage-overlay">
+      <p class="collage-line">These are just moments.</p>
+      <p class="collage-line">But with you, they mean everything.</p>
 
-  <!-- Blurred background -->
-  <div id="carousel-bg"></div>
+      <p class="collage-signature">I love you, always.</p>
+    </div>
+  </div>
 
-  <button class="nav left" onclick="prevImage()">❮</button>
-
-  <img id="carousel-img" src="pics/1.jpg" alt="Ananya">
-
-  <button class="nav right" onclick="nextImage()">❯</button>
-</div>
-
-  <p class="love-line">I love you so much Ananya ❤️</p>
-
-  <button onclick="restart()">Replay from start 💞</button>
+  <button class="soft-restart" onclick="restart()">Replay again💞</button>
 </div>
 
 <script src="script.js"></script>
