@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>For Ananya❤️</title>
+  <title>For Ananya ❤️</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -16,7 +16,7 @@
 <div id="popup" class="popup hidden">
   <div class="popup-box">
     <p id="popup-text"></p>
-    <button onclick="closePopup()">Continue 💞</button>
+    <button onclick="closePopup()">Continue 💗</button>
   </div>
 </div>
 
@@ -27,28 +27,22 @@
 <div id="heart-container"></div>
 <canvas id="confetti"></canvas>
 
-<!-- 🔒 LOCK SCREEN -->
-<div class="screen active fade" id="lockscreen">
-  <h1 class="title pulse">For Ananya ❤️</h1>
-  <p class="subtitle">Unlocks on your birthday</p>
-
-  <div class="flip-clock">
-    <div class="flip-unit"><span id="days">00</span><small>DAYS</small></div>
-    <div class="flip-unit"><span id="hours">00</span><small>HOURS</small></div>
-    <div class="flip-unit"><span id="minutes">00</span><small>MIN</small></div>
-    <div class="flip-unit"><span id="seconds">00</span><small>SEC</small></div>
-  </div>
-
-  <p class="soft-note">Worth the wait ✨</p>
-</div>
-
-<!-- INTRO -->
-<div class="screen fade" id="intro">
+<!-- INTRO (STARTS IMMEDIATELY) -->
+<div class="screen active fade" id="intro">
   <h1 class="title" id="typed-name"></h1>
-  <p>I wanted you to feel me here with you.</p>
-  <button onclick="startMusic(); go('intro','q1')">Come closer 💗</button>
+
+  <p class="timing-note">
+Whenever you’re reading this, it’s meant just for you.
+  </p>
+
+  <p>I wanted this to feel like I’m right there with you❤️</p>
+
+  <button onclick="startMusic(); go('intro','q1')">
+    Come closer 💗
+  </button>
 </div>
 
+<!-- Q1 -->
 <div class="screen fade" id="q1">
   <h2>Before I Say Anything 💗</h2>
 
@@ -59,9 +53,10 @@
     <span class="mid-line" style="--i:4">But as something I feel quietly and deeply.</span>
   </p>
 
-  <button onclick="reveal('q1','q2')">Continue</button>
+  <button onclick="reveal('q1','q2')">Continue💗</button>
 </div>
 
+<!-- Q2 -->
 <div class="screen fade" id="q2">
   <h2>When I Think of You</h2>
 
@@ -69,12 +64,13 @@
     <span class="mid-line" style="--i:1">When I think of you, my world softens.</span>
     <span class="mid-line" style="--i:2">My thoughts slow down.</span>
     <span class="mid-line" style="--i:3">My heart feels steady.</span>
-    <span class="mid-line" style="--i:4">You feel like the place I return to.</span>
+    <span class="mid-line" style="--i:4">You feel like the place I return to❤️</span>
   </p>
 
-  <button onclick="reveal('q2','q3')">Keep going</button>
+  <button onclick="reveal('q2','q3')">Keep going💗</button>
 </div>
 
+<!-- Q3 -->
 <div class="screen fade" id="q3">
   <h2>What You Are to Me</h2>
 
@@ -85,9 +81,10 @@
     <span class="mid-line" style="--i:4">And when it asks more of us.</span>
   </p>
 
-  <button onclick="reveal('q3','q4')">Go on</button>
+  <button onclick="reveal('q3','q4')">Go on💗</button>
 </div>
 
+<!-- Q4 -->
 <div class="screen fade" id="q4">
   <h2>Right Here, Right Now</h2>
 
@@ -96,17 +93,69 @@
     <span class="mid-line" style="--i:2">Confident in where you stand.</span>
     <span class="mid-line" style="--i:3">Unquestioning of my presence.</span>
     <span class="mid-line" style="--i:4">I am here with you.</span>
-    <span class="mid-line" style="--i:5">And I will always choose you.</span>
+    <span class="mid-line" style="--i:5">And I will always choose you❤️</span>
   </p>
 
-  <button onclick="reveal('q4','memory')">I love you💗</button>
+  <button onclick="reveal('q4','memory')">I love you 💗</button>
 </div>
 
 <!-- MEMORY -->
 <div class="screen" id="memory">
   <h2>Something I Love About You 💞</h2>
   <p id="memory-text"></p>
-  <button onclick="go('memory','wish')">Continue 💗</button>
+  <button onclick="go('memory','letter')">Continue💗</button>
+</div>
+
+<div class="screen fade letter-screen" id="letter">
+  <h2 class="letter-title">Something I Need You to Know</h2>
+
+  <div class="letter-container">
+    <p class="letter">
+      <span class="letter-line" style="--i:1">There is something about the way you love that stays with me.</span>
+      <span class="letter-line" style="--i:2">You show up for me in ways that feel quiet but constant.</span>
+
+      <span class="gap"></span>
+
+      <span class="letter-line" style="--i:3">You bring me food without being asked.</span>
+      <span class="letter-line" style="--i:4">You text me every day without fail.</span>
+      <span class="letter-line" style="--i:5">Even when we argue, you never walk away.</span>
+
+      <span class="gap"></span>
+
+      <span class="letter-line strong" style="--i:6">You stay.</span>
+
+      <span class="gap"></span>
+
+      <span class="letter-line" style="--i:7">I think about our small dates spent together.</span>
+      <span class="letter-line" style="--i:8">Our ice cream dates.</span>
+      <span class="letter-line" style="--i:9">Our garba night together.</span>
+      <span class="letter-line" style="--i:10">The way everything felt during our first kiss.</span>
+
+      <span class="gap"></span>
+
+      <span class="letter-line" style="--i:11">I remember the beach.</span>
+      <span class="letter-line" style="--i:12">The dessert dates.</span>
+      <span class="letter-line" style="--i:13">The chocolates, bracelets and many more gifts you gave me.</span>
+
+      <span class="gap"></span>
+
+      <span class="letter-line" style="--i:14">I love how you talk to me about your problems.</span>
+      <span class="letter-line" style="--i:15">I love how you get excited about your favourite shows.</span>
+      <span class="letter-line" style="--i:16">I love how we listen to music together and forget the rest of the world.</span>
+
+      <span class="gap"></span>
+
+      <span class="letter-line" style="--i:17">You make effort feel natural.</span>
+      <span class="letter-line" style="--i:18">You make love feel steady.</span>
+
+      <span class="gap"></span>
+
+      <span class="letter-line strong" style="--i:19">I see you.</span>
+      <span class="letter-line final" style="--i:20">And I don’t take you for granted❤️</span>
+    </p>
+  </div>
+
+  <button onclick="go('letter','wish')">Continue💗</button>
 </div>
 
 <!-- WISH -->
@@ -129,7 +178,7 @@
   </div>
 
   <p id="wish-after" class="hidden">
-    I’ll try to be worthy of that wish 🤍
+    I’ll try to be worthy of that wish ❤️
   </p>
 
   <button id="wish-btn" onclick="makeWish()" disabled>
@@ -139,7 +188,7 @@
 
 <!-- FINAL -->
 <div class="screen" id="final">
-  <h2 class="title pulse">Happy Birthday Ananya❤️</h2>
+  <h2 class="title pulse">Happy Birthday Ananya ❤️</h2>
 
   <p class="final">
     <span class="line" style="--i:1">Being away from you today hurts,</span>
@@ -159,7 +208,7 @@
     <span class="gap"></span>
 
     <span class="line" style="--i:8">Today, and on every day that follows,</span>
-    <span class="line" style="--i:9">I will always choose you.</span>
+    <span class="line" style="--i:9">I will always choose you❤️</span>
   </p>
 
   <button onclick="go('final','collage')">Continue 💗</button>
@@ -175,13 +224,12 @@
 
     <div class="collage-overlay">
       <p class="collage-line">These are just moments.</p>
-      <p class="collage-line">But with you, they mean everything.</p>
-
-      <p class="collage-signature">I love you, always.</p>
+      <p class="collage-line">But with you, they mean everything to me</p>
+      <p class="collage-signature">I love you, always❤️</p>
     </div>
   </div>
 
-  <button class="soft-restart" onclick="restart()">Replay again💞</button>
+  <button class="soft-restart" onclick="restart()">Replay again 💞</button>
 </div>
 
 <script src="script.js"></script>
